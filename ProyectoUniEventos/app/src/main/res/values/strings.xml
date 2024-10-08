@@ -1,0 +1,46 @@
+<resources>
+
+    <string name="searchLabel">Buscar</string>
+    <string name="searchOnClick">Buscado correctamente</string>
+    <string name="concertFilter">Conciertos</string>
+    <string name="theaterFilter">Teatro</string>
+    <string name="sportsFilter">Deportes</string>
+    <string name="cinemaFilter">Cine</string>
+    <string name="messageOnClickFilter">En construcción</string>
+    <string name="menuContentDescription">Icono de menú</string>
+    <string name="personContentDescription">Icono de persona</string>
+    <string name="dateContentDescription">Icono de calendario</string>
+    <string name="shoppingCarContentDescription">Icono de carrito de compras</string>
+    <string name="eventNameValidation">El nombre del evento no puede estar vacío</string>
+    <string name="eventNameLabel">Nombre del evento</string>
+    <string name="descriptionValidation">La descripción debe tener al menos 10 caracteres</string>
+    <string name="descriptionLabel">Descripción del evento</string>
+    <string name="dateValidation">La fecha no es válida</string>
+    <string name="dateEventLabel">Fecha del evento</string>
+    <string name="priceValidation">El precio debe ser mayor a 0</string>
+    <string name="priceLabel">Precio del evento</string>
+    <string name="imageValidation">La imagen no puede estar vacía</string>
+    <string name="saveButton">Guardar</string>
+
+    <string name="app_name">ProyectoUniEventos</string>
+    <string name="fullNameValidation">El nombre no puede estar vacío</string>
+    <string name="fullnameLabel">Nombre completo</string>
+    <string name="idNumberValidation">La cédula no puede estar vacía</string>
+    <string name="idNumberLabel">Cédula</string>
+    <string name="birthdayPlaceHolder">Fecha de nacimiento</string>
+    <string name="addressValidation">La dirección no puede estar vacía</string>
+    <string name="addressLabel">Dirección</string>
+    <string name="phoneNumberValidation">El número de teléfono no puede estar vacío</string>
+    <string name="phoneNumberLabel">Número de teléfono</string>
+    <string name="emailValidation">El correo no puede estar vacío</string>
+    <string name="emailLabel">Correo</string>
+    <string name="passwordValidation">La contraseña no puede ser menor a seis digitos</string>
+    <string name="passwordLabel">Contraseña</string>
+    <string name="signUpButton">Registrarse</string>
+    <string name="confirmButton">Confirmar</string>
+    <string name="cancelButton">Cancelar</string>
+    <string name="birthdayIconDescription">Icono de fecha de nacimiento</string>
+    <string name="backgroundIconDescription">Imagen de fondo</string>
+
+    <string name="cardText">Card</string>
+</resources>
