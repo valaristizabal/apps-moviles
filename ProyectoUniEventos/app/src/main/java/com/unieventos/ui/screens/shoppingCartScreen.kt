@@ -31,20 +31,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.unieventos.R
+import com.unieventos.ui.components.eventCardForm
 import com.unieventos.ui.components.filterCatalogButtonForm
 import com.unieventos.ui.components.navegationBarForm
 
 @Composable
 fun shoppingCartScreen(){
-    var busquedad by rememberSaveable { mutableStateOf("") }
-    val context = LocalContext.current
-    val scrollState = remember { androidx.compose.foundation.ScrollState(0) }
-    val searchOnClick = stringResource(id = R.string.searchOnClick)
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -55,24 +53,36 @@ fun shoppingCartScreen(){
                     .padding(padding)
                     .fillMaxSize()
                     .background(Color(0xFF201c2c)),
-                horizontalAlignment = Alignment.CenterHorizontally, //no tenemos vertical para que no lo centre
+                horizontalAlignment = Alignment.Start, //no tenemos vertical para que no lo centre
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
                         .background(Color(0xFF4F2177))
 
                 ) {
                     Text(
                         text = stringResource(id = R.string.cardText),
-                        color = Color.White, // Color blanco
-                        fontSize = 20.sp, // Tamaño de la fuente ajustado (puedes cambiarlo)
-                        textAlign = TextAlign.Center, // Centra el texto
-                        modifier = Modifier.fillMaxWidth() // Para asegurarse de que se centre horizontalmente
+                        color = Color.White,
+                        fontSize = 30.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
                     )
 
                 }
+                Row(
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    eventCardForm(
+                        eventName = "Reputation",
+                        eventDate = "12 oct 2024",
+                        painterResource = painterResource(id = R.drawable.reputation)
+                    )
+
+                }
+
                 navegationBarForm()
             }
         }

@@ -1,8 +1,6 @@
 package com.unieventos.ui.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -48,28 +45,18 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun createEventsScreen(){
-    var image by rememberSaveable {
+fun createCuponScreen(){
+    var code by rememberSaveable {
         mutableStateOf("")
     }
-    var eventName by rememberSaveable {
-        mutableStateOf("")
+    var discountPercentage by rememberSaveable {
+        mutableStateOf(0)
     }
-    var description by rememberSaveable {
+    var type by rememberSaveable {
         mutableStateOf("")
     }
 
-    var dateEvent by rememberSaveable {
-        mutableStateOf("")
-    }
-    var showDatePicker by rememberSaveable { mutableStateOf(false)}
-    var datePickerState = rememberDatePickerState()
-
-    var price by rememberSaveable {
-        mutableStateOf(0.0)
-    }
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -98,74 +85,52 @@ fun createEventsScreen(){
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        //nombre del evento
+                        // Código
                         TextFieldForm(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color.White),
-                            value = eventName,
-                            onValueChange = { eventName = it },
-                            supportingText = stringResource(id = R.string.eventNameValidation),
-                            label = stringResource(id = R.string.eventNameLabel),
-                            onValidate = { eventName.isEmpty() },
+                            value = code,
+                            onValueChange = { code = it },
+                            supportingText = stringResource(id = R.string.codeValidation), // Cambia según tu validación
+                            label = stringResource(id = R.string.codeLabel), // Cambia según tu etiqueta
+                            onValidate = { code.isEmpty() },
                             keyboardOptions = KeyboardOptions.Default,
                             isPassword = false
                         )
 
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        //descripcion
+                        // Porcentaje de descuento
                         TextFieldForm(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .background(Color.White),
-                            value = description,
-                            onValueChange = { description = it },
-                            supportingText = stringResource(id = R.string.descriptionValidation),
-                            label = stringResource(id = R.string.descriptionLabel),
-                            onValidate = { description.length < 10 }, // Ejemplo, longitud mínima de 10 caracteres
-                            keyboardOptions = KeyboardOptions.Default,
-                            isPassword = false
-                        )
-
-                        Spacer(modifier = Modifier.height(20.dp))
-
-                        //precio
-                        TextFieldForm(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
-                            value = price.toString(),
+                            value = discountPercentage.toString(),
                             onValueChange = {
-                                price = it.toDoubleOrNull() ?: 0.0
-                            }, // Convierte el texto a un número
-                            supportingText = stringResource(id = R.string.numberZeroValidation),
-                            label = stringResource(id = R.string.priceLabel),
-                            onValidate = { price <= 0 },
+                                discountPercentage = it.toIntOrNull() ?: 0 // Convierte el texto a un número
+                            },
+                            supportingText = stringResource(id = R.string.discountValidation), // Cambia según tu validación
+                            label = stringResource(id = R.string.discountLabel), // Cambia según tu etiqueta
+                            onValidate = { discountPercentage < 0 },
                             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                             isPassword = false
                         )
 
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        //fecha del evento
-                        TextField(
+                        // Tipo
+                        TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth(),
-                            value = dateEvent,
-                            onValueChange = {},
-                            readOnly = true,
-                            placeholder = {
-                                Text(text = stringResource(id = R.string.dateEventLabel))
-                            },
-                            //icon de los Section
-                            trailingIcon = {
-                                IconButton(onClick = { showDatePicker = true }) {
-                                    Icon(
-                                        imageVector = Icons.Rounded.DateRange,
-                                        contentDescription = stringResource(id = R.string.birthdayIconDescription))
-                                }
-                            }
+                                .fillMaxWidth()
+                                .background(Color.White),
+                            value = type,
+                            onValueChange = { type = it },
+                            supportingText = stringResource(id = R.string.typeValidation), // Cambia según tu validación
+                            label = stringResource(id = R.string.typeLabel), // Cambia según tu etiqueta
+                            onValidate = { type.isEmpty() },
+                            keyboardOptions = KeyboardOptions.Default,
+                            isPassword = false
                         )
 
                         Spacer(modifier = Modifier.height(20.dp))
@@ -177,34 +142,6 @@ fun createEventsScreen(){
                             Text(text = stringResource(id = R.string.saveButton))
                         }
 
-                        if(showDatePicker){
-                            DatePickerDialog(
-                                onDismissRequest = {showDatePicker = false},
-                                confirmButton = {
-                                    TextButton(onClick = {
-                                        val selectedDate = datePickerState.selectedDateMillis
-
-                                        if(selectedDate != null){
-                                            val date = Date(selectedDate)
-                                            val formattedDate = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(date)
-                                            dateEvent = formattedDate
-                                        }
-                                        showDatePicker = false
-                                    }) {
-                                        Text(text = stringResource(id = R.string.confirmButton))
-                                    }
-                                },
-                                dismissButton = {
-                                    TextButton(onClick = {
-                                        showDatePicker = false
-                                    }) {
-                                        Text(text = stringResource(id = R.string.cancelButton))
-                                    }
-                                }
-                            ) {
-                                DatePicker(state = datePickerState)
-                            }
-                        }
                     }
                 }
                 navegationBarForm()

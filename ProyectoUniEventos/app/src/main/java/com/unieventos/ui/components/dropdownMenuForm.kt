@@ -33,12 +33,13 @@ fun dropdownMenuForm(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
+                .menuAnchor()
             ,
             value = value,
-            onValueChange = {},
+            onValueChange = {onValueChange(it)},
             readOnly = true,
             placeholder = {
-                Text(text = "Seleccione una ciudad")
+                Text(text = "Seleccione una opción")
             },
             //icon de los Section
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) }

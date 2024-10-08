@@ -23,6 +23,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -37,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -64,7 +66,7 @@ fun LoginScreen() {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.fondo_apps_moviles),
-                contentDescription = "imagen de fondo",
+                contentDescription = stringResource(id = R.string.backgroundIconDescription),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -98,8 +100,8 @@ fun LoginScreen() {
                             onValueChange = {
                                 email = it
                             },
-                            supportingText = "El correo debe estar en un formato válido",
-                            label = "Correo",
+                            supportingText = stringResource(id = R.string.emailValidation),
+                            label = stringResource(id = R.string.emailLabel),
                             onValidate = {
                                 !Patterns.EMAIL_ADDRESS.matcher(email).matches()
                             },
@@ -117,8 +119,8 @@ fun LoginScreen() {
                             onValueChange = {
                                 password = it
                             },
-                            supportingText = "La contraseña debe tener al menos 6 caracteres",
-                            label = "Contraseña",
+                            supportingText = stringResource(id = R.string.passwordValidation),
+                            label = stringResource(id = R.string.passwordLabel),
                             onValidate = {
                                 password.length < 6
                             },
@@ -133,22 +135,31 @@ fun LoginScreen() {
                             onClick = { /*TODO*/ },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
                         ) {
-                            Text(text = "LOGIN")
+                            Text(text = stringResource(id = R.string.loginButton))
                         }
 
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        Text(
-                            text = "Forget the password? Click here",
-                            color = Color.White
-                        )
+                        TextButton(
+                            onClick = { /* Acción al hacer clic */ }
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.forgottenPasswordTextButton),
+                                color = Color.White
+                            )
+                        }
+
 
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        Text(
-                            text = "New user? Create an account here",
-                            color = Color.White
-                        )
+                        TextButton(
+                            onClick = { /* Acción al hacer clic */ }
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.newUserTextBuutton),
+                                color = Color.White
+                            )
+                        }
                     }
                 }
 

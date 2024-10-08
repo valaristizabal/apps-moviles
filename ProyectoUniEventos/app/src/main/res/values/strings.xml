@@ -17,10 +17,12 @@
     <string name="descriptionLabel">Descripción del evento</string>
     <string name="dateValidation">La fecha no es válida</string>
     <string name="dateEventLabel">Fecha del evento</string>
-    <string name="priceValidation">El precio debe ser mayor a 0</string>
+    <string name="numberZeroValidation">El número debe ser mayor a 0</string>
     <string name="priceLabel">Precio del evento</string>
     <string name="imageValidation">La imagen no puede estar vacía</string>
     <string name="saveButton">Guardar</string>
+
+    <string name="editButton">Editar</string>
 
     <string name="app_name">ProyectoUniEventos</string>
     <string name="fullNameValidation">El nombre no puede estar vacío</string>
@@ -43,4 +45,47 @@
     <string name="backgroundIconDescription">Imagen de fondo</string>
 
     <string name="cardText">Card</string>
+
+    <string name="albumImgDescription">Imagen del album</string>
+    <string name="eventDescriptionText">Vive una noche inolvidable con Taylor Swift en su próxima gira. Disfruta de sus mayores éxitos en un espectáculo espectacular lleno de luces deslumbrantes y una energía increíble. ¡No te pierdas el evento musical del año!</string>
+    <string name="eventNameText">Nombre del evento:  Reputation</string>
+    <string name="eventDateText">Fecha: octubre 12, 2024</string>
+    <string name="eventPriceText">Precio: $500.45</string>
+
+    <string name="loginButton">Login</string>
+    <string name="forgottenPasswordTextButton">¿Olvidaste tu contraseña? da clic aquí</string>
+    <string name="newUserTextBuutton">¿Nuevo usuario? da clic aquí</string>
+
+    <string name="makePurchaseText">Haz una compra</string>
+    <string name="ticketsNumber">Número de tickets</string>
+    <string name="cuponLabel">Cupon</string>
+    <string name="buyButton">Comprar</string>
+
+    <string name="recentTransactionsText">Transacciones recientes</string>
+
+    <string name="myProfileText">Mi perfil</string>
+    <string name="nameProfileText">Nombre: </string>
+    <string name="AgeProfileText">Edad: </string>
+    <string name="userProfileText">Usuario: </string>
+    <string name="emailProfileText">Correo: </string>
+    <string name="updateButton">Actualizar: </string>
+    <string name="deleteButton">Eliminar: </string>
+
+    <string name="passwordButton">Recuperar contraseña </string>
+
+    <string name="codeValidation">El código del cupón no puede estar vacío</string>
+    <string name="codeLabel">Código del cupón</string>
+    <string name="discountValidation">El porcentaje de descuento no puede ser menor que 0</string>
+    <string name="discountLabel">Porcentaje de descuento</string>
+    <string name="typeValidation">El tipo de cupón no puede estar vacío</string>
+    <string name="typeLabel">Tipo de cupón</string>
+
+    <string name="nameValidation">El nombre no puede estar vacío</string>
+    <string name="nameLabel">Nombre</string>
+    <string name="priceValidation">El precio debe ser mayor a 0</string>
+    <string name="priceLocalityLabel">Precio</string>
+    <string name="maxCapacityValidation">La capacidad máxima debe ser mayor a 0</string>
+    <string name="maxCapacityLabel">Capacidad máxima</string>
+
+
 </resources>
