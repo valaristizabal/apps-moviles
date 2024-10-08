@@ -1,10 +1,9 @@
 package com.unieventos.ui.screens
 
+import android.content.Context
 import android.util.Patterns
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,40 +13,50 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
+
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.unieventos.R
 import com.unieventos.ui.components.TextFieldForm
+@Composable
+fun LoginScreen(onNavigationToSingUp: () -> Unit) {
+    val context = LocalContext.current
+
+    Scaffold { padding ->
+        LoginForm(
+            padding= padding,
+            context= context,
+            onNavigationToSingUp = onNavigationToSingUp
+        )
+    }
+}
 
 @Composable
-fun LoginScreen() {
+fun LoginForm(
+    padding: PaddingValues,
+    context: Context,
+    onNavigationToSingUp: () -> Unit
+) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 
@@ -59,7 +68,7 @@ fun LoginScreen() {
         mutableStateOf(false)
     }
 
-    Scaffold { padding ->
+    Scaffold { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -72,16 +81,15 @@ fun LoginScreen() {
             )
             Column(
                 modifier = Modifier
-                    .padding(padding)
+                    .padding(innerPadding)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
-                        .padding(16.dp) //para el alrededor de box
+                        .padding(16.dp)
                         .background(
                             color = Color(0xFF201c2c),
                             shape = RoundedCornerShape(45.dp)
@@ -132,7 +140,9 @@ fun LoginScreen() {
 
                         Button(
                             enabled = email.isNotEmpty() && password.isNotEmpty() && !emailError && !passwordError,
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                // Acción de login
+                            },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
                         ) {
                             Text(text = stringResource(id = R.string.loginButton))
@@ -141,7 +151,10 @@ fun LoginScreen() {
                         Spacer(modifier = Modifier.height(20.dp))
 
                         TextButton(
-                            onClick = { /* Acción al hacer clic */ }
+                            onClick = {
+                                onNavigationToSingUp()
+
+                            }
                         ) {
                             Text(
                                 text = stringResource(id = R.string.forgottenPasswordTextButton),
@@ -149,11 +162,11 @@ fun LoginScreen() {
                             )
                         }
 
-
                         Spacer(modifier = Modifier.height(20.dp))
 
                         TextButton(
-                            onClick = { /* Acción al hacer clic */ }
+                            onClick = {
+                            }
                         ) {
                             Text(
                                 text = stringResource(id = R.string.newUserTextBuutton),
@@ -162,7 +175,6 @@ fun LoginScreen() {
                         }
                     }
                 }
-
             }
         }
     }
