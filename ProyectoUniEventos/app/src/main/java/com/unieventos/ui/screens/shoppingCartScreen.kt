@@ -1,11 +1,13 @@
 package com.unieventos.ui.screens
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -43,8 +45,11 @@ import com.unieventos.ui.components.navegationBarForm
 
 @Composable
 fun shoppingCartScreen(
-    onNavigationToCart: () -> Unit
-){
+    onNavigationToMakeApurchase: () -> Unit,
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+    ) {
+
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -81,15 +86,18 @@ fun shoppingCartScreen(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
-                        textButton = "Botón de transacciones recientes ns que va aqu+i",
-                        onclick  = onNavigationToCart //aquí se cambia el método de navegación por el correspondiente dan
+                        textButton = "Comprar",
+                        onclick  = onNavigationToMakeApurchase //aquí se cambia el método de navegación por el correspondiente dan
 
 
                     )
 
                 }
 
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+                )
             }
         }
     }

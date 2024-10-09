@@ -46,7 +46,10 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun createCuponScreen(){
+fun createCuponScreen(
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+){
     var code by rememberSaveable {
         mutableStateOf("")
     }
@@ -144,7 +147,10 @@ fun createCuponScreen(){
 
                     }
                 }
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+                )
             }
 
         }

@@ -50,7 +50,10 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun createEventsScreen(){
+fun createEventsScreen(
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+){
     var image by rememberSaveable {
         mutableStateOf("")
     }
@@ -207,7 +210,12 @@ fun createEventsScreen(){
                         }
                     }
                 }
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+
+
+                )
             }
 
         }

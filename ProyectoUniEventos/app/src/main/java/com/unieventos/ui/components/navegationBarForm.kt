@@ -26,7 +26,10 @@ import androidx.compose.ui.unit.dp
 import com.unieventos.R
 
 @Composable
-fun navegationBarForm(){
+fun navegationBarForm(
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCart: () -> Unit
+){
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -44,6 +47,7 @@ fun navegationBarForm(){
 
                 onClick = {
 
+
                 })
             {
                 Icon(
@@ -57,6 +61,7 @@ fun navegationBarForm(){
             IconButton(
 
                 onClick = {
+                    onNavigationToProfile()
 
                 })
             {
@@ -72,6 +77,7 @@ fun navegationBarForm(){
 
                 onClick = {
 
+
                 })
             {
                 Icon(
@@ -85,6 +91,8 @@ fun navegationBarForm(){
             IconButton(
 
                 onClick = {
+                    onNavigationToCart()
+
 
                 })
             {

@@ -35,7 +35,10 @@ import com.unieventos.ui.components.TextFieldForm
 import com.unieventos.ui.components.navegationBarForm
 
 @Composable
-fun createLocalityScreen(){
+fun createLocalityScreen(
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+){
     var name by rememberSaveable {
         mutableStateOf("")
     }
@@ -132,7 +135,10 @@ fun createLocalityScreen(){
 
                     }
                 }
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+                )
             }
 
         }

@@ -25,7 +25,11 @@ import com.unieventos.ui.components.navegationBarForm
 
 @Composable
 fun recentTransactionsScreen(
-    onNavigationToCart: () -> Unit
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+
+
+
 ){
     Scaffold { padding ->
         Box(
@@ -69,7 +73,10 @@ fun recentTransactionsScreen(
 
                 }
 
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+                )
             }
         }
     }

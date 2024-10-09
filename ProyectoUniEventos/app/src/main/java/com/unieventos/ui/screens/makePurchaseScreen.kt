@@ -41,7 +41,10 @@ import com.unieventos.ui.components.filterCatalogButtonForm
 import com.unieventos.ui.components.navegationBarForm
 
 @Composable
-fun makePurchaseScreen(){
+fun makePurchaseScreen(
+    onNavigationToCart: () -> Unit,
+    onNavigationToProfile: () -> Unit
+){
     val areas = listOf("Armenia", "Pereira", "Manizales", "Medellín", "Bogotá")
 
     var tickets by rememberSaveable {
@@ -165,7 +168,11 @@ fun makePurchaseScreen(){
 
                     }
                 }
-                navegationBarForm()
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart
+
+                )
             }
         }
     }
