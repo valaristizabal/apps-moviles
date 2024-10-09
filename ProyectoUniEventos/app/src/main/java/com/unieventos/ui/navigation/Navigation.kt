@@ -8,6 +8,7 @@ import com.unieventos.ui.screens.ForgottenPasswordScreen
 import com.unieventos.ui.screens.LoginScreen
 import com.unieventos.ui.screens.UserRegistrationScreen
 import com.unieventos.ui.screens.catalogScreen
+import com.unieventos.ui.screens.eventDetailsScreen
 import com.unieventos.ui.screens.makePurchaseScreen
 import com.unieventos.ui.screens.myProfileScreen
 import com.unieventos.ui.screens.shoppingCartScreen
@@ -50,10 +51,12 @@ fun Navigation() {
                 },
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                }
-                ,
+                },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                },
+                onNavigationToEventDetail = {
+                    navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
                 }
             )
         }
@@ -70,7 +73,6 @@ fun Navigation() {
                 },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
-
                 }
             )
         }
@@ -81,8 +83,7 @@ fun Navigation() {
                 },
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                }
-                ,
+                },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
                 }
@@ -93,11 +94,23 @@ fun Navigation() {
                 onNavigationToCart = {
                     navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
                 },
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                },
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                    }
+                }
 
-                ,
+            )
+        }
+        composable(RouterScreen.eventDetailScreen::class.java.name) {
+            eventDetailsScreen(
+                onNavigationToCart = {
+                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
+                },
+                onNavigationToProfile = {
+                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
+                },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
                 }
