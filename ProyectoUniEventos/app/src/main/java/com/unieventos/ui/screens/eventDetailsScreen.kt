@@ -111,6 +111,15 @@ fun eventDetailsScreen(
                             color = Color.White,
                             textAlign = TextAlign.Start)
 
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Button(
+                            onClick = { /*TODO*/ },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
+                        ) {
+                            Text(text = stringResource(id = R.string.buyButton))
+                        }
+
                     }
                 }
                 navegationBarForm(
