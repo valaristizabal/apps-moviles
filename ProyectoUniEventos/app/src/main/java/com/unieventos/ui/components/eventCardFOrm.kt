@@ -74,7 +74,7 @@ fun eventCardForm(
             )
             Button(
                 onClick = {
-                   onclick
+                   onclick()
                 // onNavigationToCart()
                 },
                 modifier = Modifier.padding(vertical = 8.dp),
