@@ -81,7 +81,8 @@ fun shoppingCartScreen(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
-                        onNavigationToCart = onNavigationToCart
+                        textButton = "Botón de transacciones recientes ns que va aqu+i",
+                        onclick  = onNavigationToCart //aquí se cambia el método de navegación por el correspondiente dan
 
 
                     )

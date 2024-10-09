@@ -140,7 +140,8 @@ fun catalogScreen(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
-                        onNavigationToCart = onNavigationToCart
+                        textButton = "Añadir al carrito",
+                        onclick  = onNavigationToCart
                     )
 
                 }

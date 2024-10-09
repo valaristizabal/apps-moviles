@@ -33,7 +33,9 @@ fun eventCardForm(
     eventName: String,
     eventDate: String,
     painterResource: Painter,
-    onNavigationToCart: () -> Unit
+    textButton: String,
+    onclick: () -> Unit
+    //onNavigationToCart: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -72,12 +74,13 @@ fun eventCardForm(
             )
             Button(
                 onClick = {
-                    onNavigationToCart()
+                   onclick
+                // onNavigationToCart()
                 },
                 modifier = Modifier.padding(vertical = 8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
             ) {
-                Text(text = "Añadir al carrito")
+                Text(text = textButton)
             }
         }
     }
