@@ -42,7 +42,9 @@ import com.unieventos.ui.components.filterCatalogButtonForm
 import com.unieventos.ui.components.navegationBarForm
 
 @Composable
-fun shoppingCartScreen(){
+fun shoppingCartScreen(
+    onNavigationToCart: () -> Unit
+){
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -78,7 +80,10 @@ fun shoppingCartScreen(){
                     eventCardForm(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
-                        painterResource = painterResource(id = R.drawable.reputation)
+                        painterResource = painterResource(id = R.drawable.reputation),
+                        onNavigationToCart = onNavigationToCart
+
+
                     )
 
                 }

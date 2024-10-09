@@ -24,7 +24,9 @@ import com.unieventos.ui.components.eventCardForm
 import com.unieventos.ui.components.navegationBarForm
 
 @Composable
-fun recentTransactionsScreen(){
+fun recentTransactionsScreen(
+    onNavigationToCart: () -> Unit
+){
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -60,7 +62,8 @@ fun recentTransactionsScreen(){
                     eventCardForm(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
-                        painterResource = painterResource(id = R.drawable.reputation)
+                        painterResource = painterResource(id = R.drawable.reputation),
+                        onNavigationToCart = onNavigationToCart
                     )
 
                 }

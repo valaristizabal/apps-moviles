@@ -137,7 +137,7 @@ fun LoginForm(
                         Button(
                             enabled = email.isNotEmpty() && password.isNotEmpty() && !emailError && !passwordError,
                             onClick = {
-                                if (email == "daniela@gmail.com" && password == "1234560") {
+                                if (email == "daniela@gmail.com" && password == "123456") {
                                     onNavigationToHome()
                                 } else {
                                     emailError = !Patterns.EMAIL_ADDRESS.matcher(email).matches()

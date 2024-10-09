@@ -52,7 +52,9 @@ import com.unieventos.ui.components.navegationBarForm
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
-fun catalogScreen() {
+fun catalogScreen(
+    onNavigationToCart: () -> Unit
+) {
     var busquedad by rememberSaveable { mutableStateOf("") }
     val context = LocalContext.current
     val scrollState = remember { androidx.compose.foundation.ScrollState(0) }
@@ -137,7 +139,8 @@ fun catalogScreen() {
                     eventCardForm(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
-                        painterResource = painterResource(id = R.drawable.reputation)
+                        painterResource = painterResource(id = R.drawable.reputation),
+                        onNavigationToCart = onNavigationToCart
                     )
 
                 }

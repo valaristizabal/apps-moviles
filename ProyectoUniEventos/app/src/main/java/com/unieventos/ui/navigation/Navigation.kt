@@ -8,6 +8,7 @@ import com.unieventos.ui.screens.ForgottenPasswordScreen
 import com.unieventos.ui.screens.LoginScreen
 import com.unieventos.ui.screens.UserRegistrationScreen
 import com.unieventos.ui.screens.catalogScreen
+import com.unieventos.ui.screens.shoppingCartScreen
 
 @Composable
 fun Navigation() {
@@ -20,13 +21,20 @@ fun Navigation() {
         composable<RouterScreen.LoginScreen> {
             LoginScreen(
                 onNavigationToSingUp = {
-                    navController.navigate(RouterScreen.UserRegistrationScreen)
+                    navController.navigate(RouterScreen.UserRegistrationScreen){
+
+                    }
                 },
                 onNavigationToForgottenPassword = {
                     navController.navigate(RouterScreen.ForgottenPasswordScreen)
                 },
                 onNavigationToHome = {
-                    navController.navigate(RouterScreen.catalogScreen)
+                    navController.navigate(RouterScreen.catalogScreen){
+                        popUpTo(0){
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
 
 
                 }
@@ -39,8 +47,21 @@ fun Navigation() {
             UserRegistrationScreen()
         }
         composable<RouterScreen.catalogScreen> {
-            catalogScreen()
+            catalogScreen(
+                onNavigationToCart = {
+                    navController.navigate(RouterScreen.shoppingCartScreen)
+                }
+
+            )
         }
+        composable<RouterScreen.shoppingCartScreen> {
+            shoppingCartScreen(
+                onNavigationToCart = {
+                    navController.navigate(RouterScreen.catalogScreen)
+                }
+            )
+        }
+
 
     }
 

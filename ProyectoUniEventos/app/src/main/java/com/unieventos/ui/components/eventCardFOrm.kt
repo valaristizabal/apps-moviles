@@ -32,7 +32,8 @@ import androidx.compose.ui.unit.dp
 fun eventCardForm(
     eventName: String,
     eventDate: String,
-    painterResource: Painter
+    painterResource: Painter,
+    onNavigationToCart: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -70,7 +71,9 @@ fun eventCardForm(
                 modifier = Modifier.padding(vertical = 4.dp)
             )
             Button(
-                onClick = { /* Lógica para agregar al carrito */ },
+                onClick = {
+                    onNavigationToCart()
+                },
                 modifier = Modifier.padding(vertical = 8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
             ) {
