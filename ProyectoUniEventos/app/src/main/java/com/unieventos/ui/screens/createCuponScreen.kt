@@ -48,7 +48,8 @@ import java.util.Locale
 @Composable
 fun createCuponScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     var code by rememberSaveable {
         mutableStateOf("")
@@ -149,7 +150,9 @@ fun createCuponScreen(
                 }
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
+
                 )
             }
 

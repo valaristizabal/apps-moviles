@@ -47,7 +47,8 @@ import com.unieventos.ui.components.navegationBarForm
 fun shoppingCartScreen(
     onNavigationToMakeApurchase: () -> Unit,
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
     ) {
 
     Scaffold { padding ->
@@ -96,7 +97,9 @@ fun shoppingCartScreen(
 
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
+
                 )
             }
         }

@@ -28,7 +28,8 @@ import com.unieventos.R
 @Composable
 fun navegationBarForm(
     onNavigationToProfile: () -> Unit,
-    onNavigationToCart: () -> Unit
+    onNavigationToCart: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     Box(
         modifier = Modifier
@@ -76,6 +77,7 @@ fun navegationBarForm(
             IconButton(
 
                 onClick = {
+                    onNavigationToCalendar()
 
 
                 })

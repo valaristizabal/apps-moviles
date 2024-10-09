@@ -37,7 +37,8 @@ import com.unieventos.ui.components.navegationBarForm
 @Composable
 fun createLocalityScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     var name by rememberSaveable {
         mutableStateOf("")
@@ -137,7 +138,8 @@ fun createLocalityScreen(
                 }
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
                 )
             }
 

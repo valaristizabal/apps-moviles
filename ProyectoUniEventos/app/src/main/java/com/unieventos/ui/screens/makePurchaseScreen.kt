@@ -43,7 +43,8 @@ import com.unieventos.ui.components.navegationBarForm
 @Composable
 fun makePurchaseScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     val areas = listOf("Armenia", "Pereira", "Manizales", "Medellín", "Bogotá")
 
@@ -170,7 +171,8 @@ fun makePurchaseScreen(
                 }
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
 
                 )
             }

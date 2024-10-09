@@ -51,7 +51,8 @@ import java.util.Locale
 @Composable
 fun editEventScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     var image by rememberSaveable {
         mutableStateOf("")
@@ -212,7 +213,8 @@ fun editEventScreen(
                 }
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
 
                 )
             }

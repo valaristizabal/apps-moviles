@@ -48,7 +48,8 @@ import java.util.Locale
 @Composable
 fun eventDetailsScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     Scaffold { padding ->
         Box(
@@ -114,7 +115,8 @@ fun eventDetailsScreen(
                 }
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
 
                 )
             }

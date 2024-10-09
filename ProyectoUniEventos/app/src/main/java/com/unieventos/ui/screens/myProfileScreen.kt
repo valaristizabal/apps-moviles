@@ -36,7 +36,8 @@ import com.unieventos.ui.components.navegationBarForm
 @Composable
 fun myProfileScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 ){
     Scaffold { padding ->
         Box(
@@ -127,7 +128,8 @@ fun myProfileScreen(
 
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
                 )
             }
         }

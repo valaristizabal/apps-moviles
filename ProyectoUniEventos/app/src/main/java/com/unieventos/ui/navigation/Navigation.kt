@@ -51,6 +51,10 @@ fun Navigation() {
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
                 }
+                ,
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                }
             )
         }
         composable(RouterScreen.shoppingCartScreen::class.java.name) {
@@ -62,7 +66,11 @@ fun Navigation() {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
                 },
                 onNavigationToCart = {
-                    // Acción irrelevante ya que estamos en el carrito
+                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
+                },
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                   
                 }
             )
         }
@@ -74,6 +82,10 @@ fun Navigation() {
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
                 }
+                ,
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                }
             )
         }
         composable(RouterScreen.myProfileScreen::class.java.name) {
@@ -84,6 +96,11 @@ fun Navigation() {
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.name)
                     }
+
+                ,
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                }
             )
         }
     }

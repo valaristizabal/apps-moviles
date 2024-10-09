@@ -54,7 +54,8 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 @Composable
 fun catalogScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 
 ) {
     var busquedad by rememberSaveable { mutableStateOf("") }
@@ -150,7 +151,8 @@ fun catalogScreen(
 
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
                 )
             }
         }

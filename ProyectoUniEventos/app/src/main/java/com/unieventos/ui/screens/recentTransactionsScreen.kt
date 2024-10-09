@@ -26,7 +26,8 @@ import com.unieventos.ui.components.navegationBarForm
 @Composable
 fun recentTransactionsScreen(
     onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit
+    onNavigationToProfile: () -> Unit,
+    onNavigationToCalendar: () -> Unit
 
 
 
@@ -75,7 +76,10 @@ fun recentTransactionsScreen(
 
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
+
+
                 )
             }
         }
