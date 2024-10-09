@@ -53,9 +53,10 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun catalogScreen(
-    onNavigationToCart: () -> Unit,
+    onNavigationToEventDetail: () -> Unit,
     onNavigationToProfile: () -> Unit,
-    onNavigationToCalendar: () -> Unit
+    onNavigationToCalendar: () -> Unit,
+    onNavigationToCart: () -> Unit
 
 ) {
     var busquedad by rememberSaveable { mutableStateOf("") }
@@ -143,8 +144,8 @@ fun catalogScreen(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
-                        textButton = "Añadir al carrito",
-                        onclick  = onNavigationToCart
+                        textButton = "ver",
+                        onclick  = onNavigationToEventDetail
                     )
 
                 }

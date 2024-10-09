@@ -70,7 +70,7 @@ fun Navigation() {
                 },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                   
+
                 }
             )
         }

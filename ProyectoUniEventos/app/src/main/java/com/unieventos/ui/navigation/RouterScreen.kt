@@ -17,6 +17,9 @@ sealed class RouterScreen {
     data object makePurchaseScreen : RouterScreen()
     @Serializable
     data object myProfileScreen : RouterScreen()
+    @Serializable
+    data object eveDetailScreen : RouterScreen()
+
 
 
 
