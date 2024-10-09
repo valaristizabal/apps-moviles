@@ -8,5 +8,9 @@ sealed class RouterScreen {
     @Serializable
      data object LoginScreen : RouterScreen()
     @Serializable
-     data object userRegistrationScreen : RouterScreen()
+     data object UserRegistrationScreen : RouterScreen()
+    @Serializable
+    data object ForgottenPasswordScreen : RouterScreen()
+
+
 }

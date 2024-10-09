@@ -4,32 +4,44 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.unieventos.ui.screens.ForgottenPasswordScreen
 import com.unieventos.ui.screens.LoginScreen
 import com.unieventos.ui.screens.UserRegistrationScreen
 import com.unieventos.ui.screens.catalogScreen
 
 @Composable
-fun Navigation(){
+fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = RouterScreen.LoginScreen
-    ){
-        composable<RouterScreen.catalogScreen>{
-            catalogScreen()
-        }
-        composable<RouterScreen.LoginScreen>{
+    ) {
+
+        composable<RouterScreen.LoginScreen> {
             LoginScreen(
                 onNavigationToSingUp = {
-                    navController.navigate(RouterScreen.userRegistrationScreen)
-                }
+                    navController.navigate(RouterScreen.UserRegistrationScreen)
+                },
+                onNavigationToForgottenPassword = {
+                    navController.navigate(RouterScreen.ForgottenPasswordScreen)
+                },
+                onNavigationToHome = {
+                    navController.navigate(RouterScreen.catalogScreen)
 
+
+                }
             )
         }
-        composable<RouterScreen.userRegistrationScreen>{
+        composable<RouterScreen.ForgottenPasswordScreen> {
+                ForgottenPasswordScreen ()
+        }
+        composable<RouterScreen.UserRegistrationScreen> {
             UserRegistrationScreen()
         }
-
+        composable<RouterScreen.catalogScreen> {
+            catalogScreen()
+        }
 
     }
+
 }

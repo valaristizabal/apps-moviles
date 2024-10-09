@@ -39,14 +39,19 @@ import androidx.compose.ui.unit.dp
 import com.unieventos.R
 import com.unieventos.ui.components.TextFieldForm
 @Composable
-fun LoginScreen(onNavigationToSingUp: () -> Unit) {
+fun LoginScreen(
+    onNavigationToSingUp: () -> Unit,
+    onNavigationToForgottenPassword: () -> Unit,
+    onNavigationToHome: () -> Unit) {
     val context = LocalContext.current
 
     Scaffold { padding ->
         LoginForm(
             padding= padding,
             context= context,
-            onNavigationToSingUp = onNavigationToSingUp
+            onNavigationToSingUp = onNavigationToSingUp,
+            onNavigationToForgottenPassword = onNavigationToForgottenPassword,
+            onNavigationToHome = onNavigationToHome
         )
     }
 }
@@ -55,23 +60,18 @@ fun LoginScreen(onNavigationToSingUp: () -> Unit) {
 fun LoginForm(
     padding: PaddingValues,
     context: Context,
-    onNavigationToSingUp: () -> Unit
+    onNavigationToSingUp: () -> Unit,
+    onNavigationToForgottenPassword: () -> Unit,
+    onNavigationToHome: () -> Unit
 ) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
-
-    var emailError by rememberSaveable {
-        mutableStateOf(false)
-    }
-
-    var passwordError by rememberSaveable {
-        mutableStateOf(false)
-    }
+    var emailError by rememberSaveable { mutableStateOf(false) }
+    var passwordError by rememberSaveable { mutableStateOf(false) }
 
     Scaffold { innerPadding ->
         Box(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.fondo_apps_moviles),
@@ -90,10 +90,7 @@ fun LoginForm(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .padding(16.dp)
-                        .background(
-                            color = Color(0xFF201c2c),
-                            shape = RoundedCornerShape(45.dp)
-                        )
+                        .background(color = Color(0xFF201c2c), shape = RoundedCornerShape(45.dp))
                         .padding(PaddingValues(horizontal = 24.dp, vertical = 60.dp))
                 ) {
                     Column(
@@ -107,12 +104,12 @@ fun LoginForm(
                             value = email,
                             onValueChange = {
                                 email = it
+                                emailError = !Patterns.EMAIL_ADDRESS.matcher(email)
+                                    .matches() // Validación al cambiar
                             },
                             supportingText = stringResource(id = R.string.emailValidation),
                             label = stringResource(id = R.string.emailLabel),
-                            onValidate = {
-                                !Patterns.EMAIL_ADDRESS.matcher(email).matches()
-                            },
+                            onValidate = { emailError },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                             isPassword = false
                         )
@@ -126,12 +123,11 @@ fun LoginForm(
                             value = password,
                             onValueChange = {
                                 password = it
+                                passwordError = password.length < 6 // Validación al cambiar
                             },
                             supportingText = stringResource(id = R.string.passwordValidation),
                             label = stringResource(id = R.string.passwordLabel),
-                            onValidate = {
-                                password.length < 6
-                            },
+                            onValidate = { passwordError },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                             isPassword = true
                         )
@@ -141,7 +137,12 @@ fun LoginForm(
                         Button(
                             enabled = email.isNotEmpty() && password.isNotEmpty() && !emailError && !passwordError,
                             onClick = {
-                                // Acción de login
+                                if (email == "daniela@gmail.com" && password == "1234560") {
+                                    onNavigationToHome()
+                                } else {
+                                    emailError = !Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                                    passwordError = password.length < 6
+                                }
                             },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
                         ) {
@@ -152,8 +153,7 @@ fun LoginForm(
 
                         TextButton(
                             onClick = {
-                                onNavigationToSingUp()
-
+                                onNavigationToForgottenPassword()
                             }
                         ) {
                             Text(
@@ -166,6 +166,7 @@ fun LoginForm(
 
                         TextButton(
                             onClick = {
+                                onNavigationToSingUp()
                             }
                         ) {
                             Text(

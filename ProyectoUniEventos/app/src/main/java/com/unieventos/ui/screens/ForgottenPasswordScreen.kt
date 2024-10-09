@@ -92,7 +92,7 @@ fun ForgottenPasswordScreen() {
                         Spacer(modifier = Modifier.height(20.dp))
 
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {  },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
                         ) {
                             Text(text = stringResource(id = R.string.passwordButton))
@@ -103,5 +103,4 @@ fun ForgottenPasswordScreen() {
 
         }
     }
-
 }
