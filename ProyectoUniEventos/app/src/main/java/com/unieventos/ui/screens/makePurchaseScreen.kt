@@ -161,7 +161,9 @@ fun makePurchaseScreen(
                         Spacer(modifier = Modifier.height(20.dp))
 
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                onNavigationToCalendar()
+                            },
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF802cbc))
                         ) {
                             Text(text = stringResource(id = R.string.buyButton))
