@@ -57,7 +57,10 @@ fun deportsFilterScreen(
     onNavigationToProfile: () -> Unit,
     onNavigationToCalendar: () -> Unit,
     onNavigationToCart: () -> Unit,
-    onNavigationSport: () -> Unit
+    onNavigationSport: () -> Unit,
+    onNavigationToTeatro: () -> Unit,
+    onNavigationToCine: () -> Unit,
+
 
 ) {
     var busquedad by rememberSaveable { mutableStateOf("") }
@@ -126,7 +129,7 @@ fun deportsFilterScreen(
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.theaterFilter),
-                        onClick = onNavigationToCalendar
+                        onClick = onNavigationToTeatro
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
@@ -136,7 +139,7 @@ fun deportsFilterScreen(
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.cinemaFilter),
-                        onClick = onNavigationToCalendar
+                        onClick = onNavigationToCine
                     )
                 }
                 Row(
