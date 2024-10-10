@@ -47,12 +47,6 @@ fun EditProfileScreen() {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.fondo_apps_moviles),
-                contentDescription = "imagen de fondo",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
             Column(
                 modifier = Modifier
                     .padding(padding)
