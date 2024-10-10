@@ -8,6 +8,7 @@ import com.unieventos.ui.screens.ForgottenPasswordScreen
 import com.unieventos.ui.screens.LoginScreen
 import com.unieventos.ui.screens.UserRegistrationScreen
 import com.unieventos.ui.screens.catalogScreen
+import com.unieventos.ui.screens.deportsFilterScreen
 import com.unieventos.ui.screens.eventDetailsScreen
 import com.unieventos.ui.screens.makePurchaseScreen
 import com.unieventos.ui.screens.myProfileScreen
@@ -57,6 +58,9 @@ fun Navigation() {
                 },
                 onNavigationToEventDetail = {
                     navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
+                },
+                onNavigationSport = {
+                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
                 }
             )
         }
@@ -116,5 +120,25 @@ fun Navigation() {
                 }
             )
         }
+        composable(RouterScreen.deportsFilterScreen::class.java.name) {
+            deportsFilterScreen(
+                onNavigationToCart = {
+                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
+                },
+                onNavigationToProfile = {
+                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
+                },
+                onNavigationToCalendar = {
+                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
+                },
+                onNavigationToEventDetail = {
+                    navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
+                },
+                onNavigationSport = {
+                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
+                }
+            )
+        }
+
     }
 }

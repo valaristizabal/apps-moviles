@@ -11,11 +11,14 @@ import androidx.compose.ui.platform.LocalContext
 @Composable
 fun filterCatalogButtonForm(
     textButton: String,
-    messageOnClick: String
+    onClick: () -> Unit,
+
+
 ){
     val context = LocalContext.current
     Button(onClick = {
-        Toast.makeText(context, messageOnClick, Toast.LENGTH_SHORT).show() },
+        onClick()
+         },
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7b2cbf))
     ) {
         Text(text = textButton)

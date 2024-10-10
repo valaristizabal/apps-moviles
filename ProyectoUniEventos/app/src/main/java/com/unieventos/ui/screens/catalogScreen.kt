@@ -56,7 +56,8 @@ fun catalogScreen(
     onNavigationToEventDetail: () -> Unit,
     onNavigationToProfile: () -> Unit,
     onNavigationToCalendar: () -> Unit,
-    onNavigationToCart: () -> Unit
+    onNavigationToCart: () -> Unit,
+    onNavigationSport: () -> Unit
 
 ) {
     var busquedad by rememberSaveable { mutableStateOf("") }
@@ -119,22 +120,22 @@ fun catalogScreen(
                 ) {
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.concertFilter),
-                        messageOnClick = stringResource(id = R.string.messageOnClickFilter)
+                        onClick = onNavigationToCalendar
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.theaterFilter),
-                        messageOnClick = stringResource(id = R.string.messageOnClickFilter)
+                        onClick = onNavigationToCalendar
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.sportsFilter),
-                        messageOnClick = stringResource(id = R.string.messageOnClickFilter)
+                        onClick = onNavigationSport
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     filterCatalogButtonForm(
                         textButton = stringResource(id = R.string.cinemaFilter),
-                        messageOnClick = stringResource(id = R.string.messageOnClickFilter)
+                        onClick = onNavigationToCalendar
                     )
                 }
                 Row(

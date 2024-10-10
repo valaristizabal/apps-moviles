@@ -19,6 +19,9 @@ sealed class RouterScreen {
     data object myProfileScreen : RouterScreen()
     @Serializable
     data object eventDetailScreen : RouterScreen()
+    @Serializable
+    data object deportsFilterScreen : RouterScreen()
+
 
 
 
