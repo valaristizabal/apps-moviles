@@ -125,8 +125,7 @@ fun makePurchaseScreen(
                         //cantidad de tickets
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = tickets.toString(),
                             onValueChange = {
                                 tickets = it.toIntOrNull() ?: 0

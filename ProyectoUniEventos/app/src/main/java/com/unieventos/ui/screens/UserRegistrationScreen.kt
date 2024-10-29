@@ -107,8 +107,7 @@ fun UserRegistrationScreen() {
                     ) {
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = fullName,
                             onValueChange = {
                                 fullName = it
@@ -126,8 +125,7 @@ fun UserRegistrationScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = idNumber,
                             onValueChange = {
                                 idNumber = it
@@ -176,8 +174,7 @@ fun UserRegistrationScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = address,
                             onValueChange = {
                                 address = it
@@ -195,8 +192,7 @@ fun UserRegistrationScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = phoneNumber,
                             onValueChange = {
                                 phoneNumber = it
@@ -214,8 +210,7 @@ fun UserRegistrationScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = email,
                             onValueChange = {
                                 email = it
@@ -233,8 +228,7 @@ fun UserRegistrationScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = password,
                             onValueChange = {
                                 password = it

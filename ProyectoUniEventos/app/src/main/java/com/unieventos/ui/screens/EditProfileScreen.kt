@@ -70,8 +70,7 @@ fun EditProfileScreen() {
                     ) {
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = fullName,
                             onValueChange = {
                                 fullName = it
@@ -89,8 +88,7 @@ fun EditProfileScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = address,
                             onValueChange = {
                                 address = it
@@ -108,8 +106,7 @@ fun EditProfileScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = phoneNumber,
                             onValueChange = {
                                 phoneNumber = it
@@ -127,8 +124,7 @@ fun EditProfileScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = email,
                             onValueChange = {
                                 email = it
@@ -146,8 +142,7 @@ fun EditProfileScreen() {
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = password,
                             onValueChange = {
                                 password = it

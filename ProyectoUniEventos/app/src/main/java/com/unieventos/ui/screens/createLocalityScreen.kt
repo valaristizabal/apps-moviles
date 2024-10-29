@@ -96,8 +96,7 @@ fun createLocalityScreen(
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = price.toString(),
                             onValueChange = {
                                 price = it.toDoubleOrNull() ?: 0.0

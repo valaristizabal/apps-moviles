@@ -106,8 +106,7 @@ fun createEventsScreen(
                         //nombre del evento
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = eventName,
                             onValueChange = { eventName = it },
                             supportingText = stringResource(id = R.string.eventNameValidation),
@@ -122,8 +121,7 @@ fun createEventsScreen(
                         //descripcion
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = description,
                             onValueChange = { description = it },
                             supportingText = stringResource(id = R.string.descriptionValidation),
@@ -138,8 +136,7 @@ fun createEventsScreen(
                         //precio
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = price.toString(),
                             onValueChange = {
                                 price = it.toDoubleOrNull() ?: 0.0

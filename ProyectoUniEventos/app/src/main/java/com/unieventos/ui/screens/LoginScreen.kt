@@ -99,8 +99,7 @@ fun LoginForm(
                     ) {
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = email,
                             onValueChange = {
                                 email = it
@@ -118,8 +117,7 @@ fun LoginForm(
 
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = password,
                             onValueChange = {
                                 password = it

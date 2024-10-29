@@ -92,8 +92,7 @@ fun createCuponScreen(
                         // Código
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = code,
                             onValueChange = { code = it },
                             supportingText = stringResource(id = R.string.codeValidation), // Cambia según tu validación
@@ -108,8 +107,7 @@ fun createCuponScreen(
                         // Porcentaje de descuento
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = discountPercentage.toString(),
                             onValueChange = {
                                 discountPercentage = it.toIntOrNull() ?: 0 // Convierte el texto a un número
@@ -126,8 +124,7 @@ fun createCuponScreen(
                         // Tipo
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = type,
                             onValueChange = { type = it },
                             supportingText = stringResource(id = R.string.typeValidation), // Cambia según tu validación

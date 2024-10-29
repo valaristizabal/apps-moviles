@@ -75,8 +75,7 @@ fun ForgottenPasswordScreen() {
                     ) {
                         TextFieldForm(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .background(Color.White),
+                                .fillMaxWidth(),
                             value = email,
                             onValueChange = {
                                 email = it
