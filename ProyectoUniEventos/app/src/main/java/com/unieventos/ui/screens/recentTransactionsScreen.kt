@@ -64,13 +64,13 @@ fun recentTransactionsScreen(
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    eventCardForm(
+                    /*eventCardForm(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
                         textButton = "Botón de transacciones recientes ns que va aqu+i",
                         onclick  = onNavigationToCart //aquí se cambia el método de navegación por el correspondiente dan
-                    )
+                    )*/
 
                 }
 

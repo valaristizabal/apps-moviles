@@ -18,7 +18,7 @@ sealed class RouterScreen {
     @Serializable
     data object myProfileScreen : RouterScreen()
     @Serializable
-    data object eventDetailScreen : RouterScreen()
+    data class eventDetailScreen(val eventId: String) : RouterScreen()
     @Serializable
     data object deportsFilterScreen : RouterScreen()
     @Serializable

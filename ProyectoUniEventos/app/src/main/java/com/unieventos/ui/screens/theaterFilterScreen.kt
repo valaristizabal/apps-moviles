@@ -142,13 +142,13 @@ fun theaterFilterScreen(
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    eventCardForm(
+                    /*eventCardForm(
                         eventName = "mean girls you can sit with us",
                         eventDate = "9 oct 2024",
                         painterResource = painterResource(id = R.drawable.meangirls),
                         textButton = "ver",
                         onclick  = onNavigationToEventDetail
-                    )
+                    )*/
 
                 }
 

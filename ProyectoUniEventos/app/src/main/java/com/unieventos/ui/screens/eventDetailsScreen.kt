@@ -47,10 +47,8 @@ import java.util.Locale
 
 @Composable
 fun eventDetailsScreen(
-    onNavigationToCart: () -> Unit,
-    onNavigationToProfile: () -> Unit,
-    onNavigationToCalendar: () -> Unit
-){
+    eventId: String
+) {
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -64,7 +62,9 @@ fun eventDetailsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {
-                Box(
+                Text(text = "Event id $eventId")
+            }
+                /*Box(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
                         .padding(16.dp) //para el alrededor de box
@@ -130,8 +130,11 @@ fun eventDetailsScreen(
                     onNavigationToCalendar = onNavigationToCalendar
 
                 )
+
+
             }
 
+        }*/
         }
     }
 }

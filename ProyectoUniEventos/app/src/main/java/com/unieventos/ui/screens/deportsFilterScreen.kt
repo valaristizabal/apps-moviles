@@ -145,13 +145,13 @@ fun deportsFilterScreen(
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    eventCardForm(
+                    /*eventCardForm(
                         eventName = "Partido argentina",
                         eventDate = "9 oct 2024",
                         painterResource = painterResource(id = R.drawable.messi),
                         textButton = "ver",
                         onclick  = onNavigationToEventDetail
-                    )
+                    )*/
 
                 }
 

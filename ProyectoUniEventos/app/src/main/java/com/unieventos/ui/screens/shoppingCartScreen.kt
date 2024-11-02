@@ -83,7 +83,7 @@ fun shoppingCartScreen(
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    eventCardForm(
+                    /*eventCardForm(
                         eventName = "Reputation",
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
@@ -91,7 +91,7 @@ fun shoppingCartScreen(
                         onclick  = onNavigationToMakeApurchase //aquí se cambia el método de navegación por el correspondiente dan
 
 
-                    )
+                    )*/
 
                 }
 

@@ -142,13 +142,13 @@ fun cinemaFilterScreen(
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    eventCardForm(
+                    /*eventCardForm(
                         eventName = "Spiderman across the spider-verse",
                         eventDate = "13 nov 2024",
                         painterResource = painterResource(id = R.drawable.spiderman),
                         textButton = "ver",
                         onclick  = onNavigationToEventDetail
-                    )
+                    )*/
 
                 }
 
