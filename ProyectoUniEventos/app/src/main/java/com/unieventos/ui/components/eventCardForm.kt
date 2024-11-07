@@ -4,8 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,9 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.unieventos.model.Event
 
 @Composable
@@ -28,45 +29,38 @@ fun eventCardForm(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxWidth(0.55f) // Reduce el ancho para que sea un poco más pequeño
-            .padding(8.dp) // Reduce el padding alrededor del Box
+            .fillMaxWidth(0.55f)
+            .padding(8.dp)
             .background(
                 color = Color(0xFF10002B),
-                shape = RoundedCornerShape(30.dp) // Reduce el radio de las esquinas
+                shape = RoundedCornerShape(15.dp)
             )
-            .padding(PaddingValues(horizontal = 16.dp, vertical = 12.dp)) // Ajusta el padding interno
+            .padding(12.dp)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            /*Image(
-                painter = painterResource,
-                contentDescription = eventName,
+            AsyncImage(
+                model = event.image,
+                contentDescription = event.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp) // Ajusta la altura según sea necesario
-                    .clip(RoundedCornerShape(45.dp)), // Clipping para esquinas redondeadas
+                    .height(180.dp)
+                    .clip(RoundedCornerShape(15.dp)),
                 contentScale = ContentScale.Crop
-            )*/
-            Spacer(modifier = Modifier.height(8.dp))
+            )
             Text(
                 text = event.name,
                 color = Color.White,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(vertical = 4.dp)
+                fontWeight = FontWeight.Bold
             )
             Text(
                 text = event.date,
-                color = Color.LightGray,
-                modifier = Modifier.padding(vertical = 4.dp)
+                color = Color.LightGray
             )
             Button(
-                onClick = {
-                    onNavigationToEventDetail(event.id)
-                   //onclick()
-                },
-                modifier = Modifier.padding(vertical = 8.dp),
+                onClick = { onNavigationToEventDetail(event.id) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE))
             ) {
                 Text(text = "Ver")

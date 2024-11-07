@@ -43,7 +43,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.unieventos.R
 import com.unieventos.ui.components.TextFieldForm
-import com.unieventos.ui.components.navegationBarForm
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -209,13 +208,7 @@ fun createEventsScreen(
                         }
                     }
                 }
-                navegationBarForm(
-                    onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart,
-                    onNavigationToCalendar = onNavigationToCalendar
 
-
-                )
             }
 
         }

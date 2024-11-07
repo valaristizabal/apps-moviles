@@ -53,6 +53,7 @@ fun editEventScreen(
     onNavigationToCart: () -> Unit,
     onNavigationToProfile: () -> Unit,
     onNavigationToCalendar: () -> Unit
+
 ){
     var image by rememberSaveable {
         mutableStateOf("")

@@ -13,18 +13,21 @@ sealed class RouterScreen {
     data object ForgottenPasswordScreen : RouterScreen()
     @Serializable
     data object shoppingCartScreen : RouterScreen()
-    @Serializable
+    @Serializable 
     data object makePurchaseScreen : RouterScreen()
     @Serializable
     data object myProfileScreen : RouterScreen()
     @Serializable
-    data class eventDetailScreen(val eventId: String) : RouterScreen()
+    data class eventDetailsScreen(val eventId: String) : RouterScreen()
     @Serializable
     data object deportsFilterScreen : RouterScreen()
     @Serializable
     data object theaterFilterScreen : RouterScreen()
     @Serializable
     data object cinemaFilterScreen : RouterScreen()
+    @Serializable
+    data object concertsFilterScreen : RouterScreen()
+
 
 
 

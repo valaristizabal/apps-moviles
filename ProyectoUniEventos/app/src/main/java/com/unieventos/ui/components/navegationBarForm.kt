@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
@@ -30,7 +31,7 @@ fun navegationBarForm(
     onNavigationToProfile: () -> Unit,
     onNavigationToCart: () -> Unit,
     onNavigationToCalendar: () -> Unit
-){
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -40,17 +41,12 @@ fun navegationBarForm(
                 .fillMaxWidth()
                 .height(60.dp)
                 .background(Color(0xFF44156E))
-                .align(Alignment.BottomCenter),
+                .padding(vertical = 16.dp)
+                .padding(bottom = 20.dp), // Ajuste adicional para separar de los botones del sistema
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-
-                onClick = {
-
-
-                })
-            {
+            IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Default.Menu,
                     contentDescription = stringResource(id = R.string.menuContentDescription),
@@ -59,13 +55,7 @@ fun navegationBarForm(
                 )
             }
             Spacer(modifier = Modifier.width(30.dp))
-            IconButton(
-
-                onClick = {
-                    onNavigationToProfile()
-
-                })
-            {
+            IconButton(onClick = { onNavigationToProfile() }) {
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = stringResource(id = R.string.personContentDescription),
@@ -74,14 +64,7 @@ fun navegationBarForm(
                 )
             }
             Spacer(modifier = Modifier.width(30.dp))
-            IconButton(
-
-                onClick = {
-                    onNavigationToCalendar()
-
-
-                })
-            {
+            IconButton(onClick = { onNavigationToCalendar() }) {
                 Icon(
                     imageVector = Icons.Default.DateRange,
                     contentDescription = stringResource(id = R.string.dateContentDescription),
@@ -90,14 +73,7 @@ fun navegationBarForm(
                 )
             }
             Spacer(modifier = Modifier.width(30.dp))
-            IconButton(
-
-                onClick = {
-                    onNavigationToCart()
-
-
-                })
-            {
+            IconButton(onClick = { onNavigationToCart() }) {
                 Icon(
                     imageVector = Icons.Default.ShoppingCart,
                     contentDescription = stringResource(id = R.string.shoppingCarContentDescription),

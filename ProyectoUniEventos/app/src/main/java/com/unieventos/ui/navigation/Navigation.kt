@@ -1,28 +1,27 @@
 package com.unieventos.ui.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.unieventos.ui.screens.CatalogScreen
 import com.unieventos.ui.screens.ForgottenPasswordScreen
 import com.unieventos.ui.screens.LoginScreen
 import com.unieventos.ui.screens.UserRegistrationScreen
-import com.unieventos.ui.screens.catalogScreen
-import com.unieventos.ui.screens.cinemaFilterScreen
-import com.unieventos.ui.screens.deportsFilterScreen
 import com.unieventos.ui.screens.eventDetailsScreen
 import com.unieventos.ui.screens.makePurchaseScreen
 import com.unieventos.ui.screens.myProfileScreen
 import com.unieventos.ui.screens.shoppingCartScreen
-import com.unieventos.ui.screens.theaterFilterScreen
+
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = RouterScreen.LoginScreen::class.java.name
+        startDestination = RouterScreen.catalogScreen::class.java.name
     ) {
         composable(RouterScreen.LoginScreen::class.java.name) {
             LoginScreen(
@@ -34,9 +33,7 @@ fun Navigation() {
                 },
                 onNavigationToHome = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name) {
-                        popUpTo(0) {
-                            inclusive = true
-                        }
+                        popUpTo(0) { inclusive = true }
                         launchSingleTop = true
                     }
                 }
@@ -52,30 +49,38 @@ fun Navigation() {
         }
 
         composable(RouterScreen.catalogScreen::class.java.name) {
-            catalogScreen(
-                /*onNavigationToCart = {
-                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
+            CatalogScreen(
+                onNavigationToEventDetail = { eventId ->
+                    navController.navigate("eventDetails/$eventId")
+                },
+                onCategorySelected = { category ->
+                    // Aquí puedes agregar el manejo de categorías
                 },
                 onNavigationToProfile = {
-                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
+                    // Navega a la pantalla de perfil
+                    navController.navigate("profile")
+                },
+                onNavigationToCart = {
+                    // Navega a la pantalla del carrito
+                    navController.navigate("cart")
                 },
                 onNavigationToCalendar = {
-                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                },*/
-                onNavigationToEventDetail = { eventId ->
-                    navController.navigate(RouterScreen.eventDetailScreen(eventId)::class.java.name)
-                },
-                /*onNavigationSport = {
-                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
-                },
-                onNavigationToTheater = {
-                    navController.navigate(RouterScreen.theaterFilterScreen::class.java.name)
-                },
-                onNavigationToCinema = {
-                    navController.navigate(RouterScreen.cinemaFilterScreen::class.java.name)
-                }*/
+                    // Navega a la pantalla del calendario
+                    navController.navigate("calendar")
+                }
             )
         }
+
+
+        composable("eventDetails/{eventId}") { backStackEntry ->
+            val eventId = backStackEntry.arguments?.getString("eventId")
+            if (eventId != null) {
+                eventDetailsScreen(eventId = eventId)
+            } else {
+                Text("Error: Event ID not found")
+            }
+        }
+
 
         composable(RouterScreen.shoppingCartScreen::class.java.name) {
             shoppingCartScreen(
@@ -91,7 +96,6 @@ fun Navigation() {
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.name)
                 }
-
             )
         }
 
@@ -123,89 +127,22 @@ fun Navigation() {
             )
         }
 
-        composable(RouterScreen.eventDetailScreen::class.java.name) {
-            val eventId = it.toRoute<RouterScreen.eventDetailScreen>()
-            eventDetailsScreen(
-                eventId = eventId.eventId
-            )
-            /*eventDetailsScreen(
-                onNavigationToCart = {
-                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
-                },
-                onNavigationToProfile = {
-                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                },
-                onNavigationToCalendar = {
-                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                }
-            )*/
+        composable("eventDetails/{eventId}") { backStackEntry ->
+            val eventId = backStackEntry.arguments?.getString("eventId") ?: ""
+            eventDetailsScreen(eventId = eventId)
         }
 
-        composable(RouterScreen.deportsFilterScreen::class.java.name) {
-            deportsFilterScreen(
-                onNavigationToCart = {
-                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
-                },
-                onNavigationToProfile = {
-                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                },
-                onNavigationToCalendar = {
-                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                },
-                onNavigationToEventDetail = {
-                    navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
-                },
-                onNavigationSport = {
-                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
-                },
-                onNavigationToTeatro = {
-                    navController.navigate(RouterScreen.theaterFilterScreen::class.java.name)
-                },
-                onNavigationToCine = {
-                    navController.navigate(RouterScreen.cinemaFilterScreen::class.java.name)
-                }
-            )
+        composable(RouterScreen.eventDetailsScreen::class.java.name) {
+
+
         }
 
         composable(RouterScreen.theaterFilterScreen::class.java.name) {
-            theaterFilterScreen(
-                onNavigationToCart = {
-                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
-                },
-                onNavigationToProfile = {
-                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                },
-                onNavigationToCalendar = {
-                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                },
-                onNavigationToEventDetail = {
-                    navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
-                },
-                onNavigationSport = {
-                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
-                },
 
-            )
+
         }
-        composable(RouterScreen.cinemaFilterScreen::class.java.name) {
-            cinemaFilterScreen(
-                onNavigationToCart = {
-                    navController.navigate(RouterScreen.shoppingCartScreen::class.java.name)
-                },
-                onNavigationToProfile = {
-                    navController.navigate(RouterScreen.myProfileScreen::class.java.name)
-                },
-                onNavigationToCalendar = {
-                    navController.navigate(RouterScreen.catalogScreen::class.java.name)
-                },
-                onNavigationToEventDetail = {
-                    navController.navigate(RouterScreen.eventDetailScreen::class.java.name)
-                },
-                onNavigationSport = {
-                    navController.navigate(RouterScreen.deportsFilterScreen::class.java.name)
-                }
 
-            )
+        composable(RouterScreen.cinemaFilterScreen::class.java.name) {
 
         }
     }
