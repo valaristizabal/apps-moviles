@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -46,15 +47,17 @@ fun CatalogScreen(
     Scaffold(
         topBar = {
             topBarHomeForm { category ->
-                selectedCategory = category // Cambia la categoría seleccionada
+                selectedCategory = category
             }
         },
         bottomBar = {
-            navegationBarForm(
-                onNavigationToProfile = onNavigationToProfile,
-                onNavigationToCart = onNavigationToCart,
-                onNavigationToCalendar = onNavigationToCalendar
-            )
+            Box(modifier = Modifier.navigationBarsPadding()) { // Asegura que respete los botones del sistema
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
+                )
+            }
         }
     ) { paddingValues ->
         val filteredEvents = getEventsList().filter { event ->
@@ -68,8 +71,6 @@ fun CatalogScreen(
         )
     }
 }
-
-
 
 @Composable
 fun ListEvents(
@@ -90,9 +91,7 @@ fun ListEvents(
     }
 }
 
-
-
-    @OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun topBarHomeForm(
     onCategorySelected: (String) -> Unit // Callback para manejar selección de categoría
@@ -129,7 +128,6 @@ fun CategoryButton(
         Text(text = category, color = Color.White)
     }
 }
-
 
 fun getEventsList(): List<Event> {
     return listOf(

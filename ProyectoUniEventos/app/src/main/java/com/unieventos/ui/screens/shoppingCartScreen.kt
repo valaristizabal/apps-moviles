@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -49,25 +50,34 @@ fun shoppingCartScreen(
     onNavigationToCart: () -> Unit,
     onNavigationToProfile: () -> Unit,
     onNavigationToCalendar: () -> Unit
-    ) {
-
-    Scaffold { padding ->
+) {
+    Scaffold(
+        bottomBar = {
+            // Barra de navegación al final de la pantalla
+            Box(modifier = Modifier.navigationBarsPadding()) { // Asegura que respete los botones del sistema
+                navegationBarForm(
+                    onNavigationToProfile = onNavigationToProfile,
+                    onNavigationToCart = onNavigationToCart,
+                    onNavigationToCalendar = onNavigationToCalendar
+                )
+            }
+        }
+    ) { padding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(padding) // Esto asegurará que el contenido no se solape con la barra de navegación
         ) {
             Column(
                 modifier = Modifier
-                    .padding(padding)
                     .fillMaxSize()
                     .background(Color(0xFF201c2c)),
-                horizontalAlignment = Alignment.Start, //no tenemos vertical para que no lo centre
+                horizontalAlignment = Alignment.Start,
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color(0xFF4F2177))
-
                 ) {
                     Text(
                         text = stringResource(id = R.string.cardText),
@@ -78,8 +88,9 @@ fun shoppingCartScreen(
                             .fillMaxWidth()
                             .padding(16.dp)
                     )
-
                 }
+
+                // Aquí puedes agregar más contenido como tarjetas de eventos
                 Row(
                     horizontalArrangement = Arrangement.Start
                 ) {
@@ -88,19 +99,9 @@ fun shoppingCartScreen(
                         eventDate = "12 oct 2024",
                         painterResource = painterResource(id = R.drawable.reputation),
                         textButton = "Comprar",
-                        onclick  = onNavigationToMakeApurchase //aquí se cambia el método de navegación por el correspondiente dan
-
-
+                        onclick  = onNavigationToMakeApurchase
                     )*/
-
                 }
-
-                navegationBarForm(
-                    onNavigationToProfile = onNavigationToProfile,
-                    onNavigationToCart = onNavigationToCart,
-                    onNavigationToCalendar = onNavigationToCalendar
-
-                )
             }
         }
     }

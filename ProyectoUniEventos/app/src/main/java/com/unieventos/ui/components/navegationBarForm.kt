@@ -34,15 +34,15 @@ fun navegationBarForm(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth() // Ocupa solo el ancho, no el alto
+            .height(60.dp)
+            .background(Color(0xFF44156E))
+            .padding(vertical = 16.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp)
-                .background(Color(0xFF44156E))
-                .padding(vertical = 16.dp)
-                .padding(bottom = 20.dp), // Ajuste adicional para separar de los botones del sistema
+                .padding(bottom = 8.dp), // Ajuste adicional para evitar que toque los botones del sistema
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
