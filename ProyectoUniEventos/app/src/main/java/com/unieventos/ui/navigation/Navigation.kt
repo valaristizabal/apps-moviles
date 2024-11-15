@@ -13,9 +13,10 @@ import com.unieventos.ui.screens.eventDetailsScreen
 import com.unieventos.ui.screens.makePurchaseScreen
 import com.unieventos.ui.screens.myProfileScreen
 import com.unieventos.ui.screens.shoppingCartScreen
+import com.unieventos.viewModel.EventosViewModel
 
 @Composable
-fun Navigation() {
+fun Navigation( eventosViewModel: EventosViewModel) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -48,6 +49,7 @@ fun Navigation() {
 
         composable(RouterScreen.catalogScreen::class.java.simpleName) {
             CatalogScreen(
+
                 onNavigationToEventDetail = { eventId ->
                     navController.navigate("eventDetails/$eventId")
                 },

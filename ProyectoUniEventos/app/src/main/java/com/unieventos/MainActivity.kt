@@ -12,15 +12,17 @@ import com.unieventos.viewModel.EventosViewModel
 class MainActivity : ComponentActivity() {
 
     // Usamos 'by viewModels()' para obtener la instancia del ViewModel gestionado por el ciclo de vida
-    private val viewModel: EventosViewModel by viewModels()
+    private val eventosViewModel: EventosViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ProyectoUniEventosTheme {
-                // Aquí podrías pasar el ViewModel si es necesario en la navegación
-                Navigation()
+
+                Navigation(
+                    eventosViewModel = eventosViewModel
+                )
             }
         }
     }
