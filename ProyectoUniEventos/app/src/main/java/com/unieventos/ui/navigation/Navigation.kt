@@ -53,9 +53,9 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                 onNavigationToEventDetail = { eventId ->
                     navController.navigate("eventDetails/$eventId")
                 },
-                onCategorySelected = { category ->
+               /* onCategorySelected = { category ->
                     // Aquí puedes agregar el manejo de categorías
-                },
+                },*/
                 onNavigationToProfile = {
                     navController.navigate(RouterScreen.myProfileScreen::class.java.simpleName)
                 },
@@ -64,7 +64,8 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                 },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.simpleName)
-                }
+                },
+                eventosViewModel = eventosViewModel
             )
         }
 
@@ -79,6 +80,7 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                 }
 
                 // Pasa la función onBuyClicked a la pantalla de detalles del evento
+
                 eventDetailsScreen(eventId = eventId, onBuyClicked = onBuyClicked)
             } else {
                 Text("Error: Event ID not found")
@@ -99,7 +101,9 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                 },
                 onNavigationToCalendar = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.simpleName)
-                }
+                },
+                eventosViewModel = eventosViewModel,
+                
             )
         }
 

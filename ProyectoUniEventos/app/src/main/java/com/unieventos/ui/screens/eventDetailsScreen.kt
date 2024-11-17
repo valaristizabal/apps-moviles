@@ -20,10 +20,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.unieventos.R
+import com.unieventos.viewModel.EventosViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun eventDetailsScreen(eventId: String, onBuyClicked: () -> Unit) {
-    val event = getEventsList().find { it.id == eventId }
+fun eventDetailsScreen(
+    eventosViewModel: EventosViewModel = viewModel(), // Usamos viewModel() para obtener una instancia
+    eventId: String,
+    onBuyClicked: () -> Unit
+) {
+    // Observamos la lista de eventos desde el ViewModel
+    val eventsList = eventosViewModel.getEventsList()
+
+    // Buscamos el evento con el ID proporcionado
+    val event = eventsList.find { it.id == eventId }
 
     Scaffold { padding ->
         Box(modifier = Modifier.fillMaxSize()) {
@@ -66,18 +76,21 @@ fun eventDetailsScreen(eventId: String, onBuyClicked: () -> Unit) {
                         color = Color.White
                     )
 
-                    // Botón de compra con estilo similar al de categorías
                     Button(
-                        onClick = onBuyClicked,
-                        modifier = Modifier
-                            .padding(16.dp),
+                        onClick = {
+                            if (event != null) {
+                                eventosViewModel.addToCart(event) // Agregar el evento al carrito
+                            }
+                            onBuyClicked() // Opcional: manejar navegación después de añadir
+                        },
+                        modifier = Modifier.padding(16.dp),
                         shape = RoundedCornerShape(16.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF6200EE), // Color morado
-                            contentColor = Color.White // Color del texto blanco
+                            containerColor = Color(0xFF6200EE),
+                            contentColor = Color.White
                         )
                     ) {
-                        Text(text = "Buy Ticket")
+                        Text(text = "Add to cart")
                     }
 
                 } else {

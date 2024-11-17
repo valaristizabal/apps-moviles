@@ -1,60 +1,42 @@
 package com.unieventos.ui.screens
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.unieventos.R
 import com.unieventos.ui.components.eventCardForm
-import com.unieventos.ui.components.filterCatalogButtonForm
 import com.unieventos.ui.components.navegationBarForm
+import com.unieventos.viewModel.EventosViewModel
 
 @Composable
 fun shoppingCartScreen(
+    eventosViewModel: EventosViewModel = viewModel(),
     onNavigationToMakeApurchase: () -> Unit,
     onNavigationToCart: () -> Unit,
     onNavigationToProfile: () -> Unit,
     onNavigationToCalendar: () -> Unit
 ) {
+    // Observamos el carrito
+    val cartItems = eventosViewModel.cart.collectAsState().value
+
     Scaffold(
         bottomBar = {
-            // Barra de navegación al final de la pantalla
-            Box(modifier = Modifier.navigationBarsPadding()) { // Asegura que respete los botones del sistema
+            Box(modifier = Modifier.navigationBarsPadding()) {
                 navegationBarForm(
                     onNavigationToProfile = onNavigationToProfile,
                     onNavigationToCart = onNavigationToCart,
@@ -66,7 +48,7 @@ fun shoppingCartScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding) // Esto asegurará que el contenido no se solape con la barra de navegación
+                .padding(padding)
         ) {
             Column(
                 modifier = Modifier
@@ -80,27 +62,55 @@ fun shoppingCartScreen(
                         .background(Color(0xFF4F2177))
                 ) {
                     Text(
-                        text = stringResource(id = R.string.cardText),
+                        text = "Shopping Cart",
                         color = Color.White,
                         fontSize = 30.sp,
-                        textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(16.dp)
                     )
                 }
 
-                // Aquí puedes agregar más contenido como tarjetas de eventos
-                Row(
-                    horizontalArrangement = Arrangement.Start
+                // Mostrar los eventos en el carrito
+                if (cartItems.isEmpty()) {
+                    Text(
+                        text = "Your cart is empty.",
+                        color = Color.White,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                } else {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        cartItems.forEach { event ->
+                            eventCardForm(
+                                event = event, // Pasa el evento completo
+                                onNavigationToEventDetail = { eventId ->
+                                    // Maneja la navegación al detalle del evento
+                                }
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Botón para finalizar la compra
+                Button(
+                    onClick = {
+                        if (cartItems.isNotEmpty()) {
+                            // Simular compra exitosa
+                            onNavigationToMakeApurchase()
+                        }
+                    },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth(),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6200EE), // Color morado
+                        contentColor = Color.White
+                    )
                 ) {
-                    /*eventCardForm(
-                        eventName = "Reputation",
-                        eventDate = "12 oct 2024",
-                        painterResource = painterResource(id = R.drawable.reputation),
-                        textButton = "Comprar",
-                        onclick  = onNavigationToMakeApurchase
-                    )*/
+                    Text(text = "Complete Purchase")
                 }
             }
         }

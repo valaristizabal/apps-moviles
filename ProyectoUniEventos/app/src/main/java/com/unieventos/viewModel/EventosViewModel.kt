@@ -7,21 +7,25 @@ import kotlinx.coroutines.flow.StateFlow
 
 class EventosViewModel : ViewModel() {
 
-    // Usar MutableStateFlow para emitir cambios de estado
+    // Usar MutableStateFlow para emitir cambios de estado de los eventos
     private val _eventos = MutableStateFlow(getEventsList())
     val eventos: StateFlow<List<Event>> = _eventos
+
+    // Usar MutableStateFlow para emitir cambios de estado del carrito
+    private val _cart = MutableStateFlow<List<Event>>(emptyList())
+    val cart: StateFlow<List<Event>> = _cart
 
     fun getEventById(eventId: String): Event? {
         return _eventos.value.find { it.id == eventId }
     }
 
     fun createEvent(event: Event) {
-        // Añadir el evento a la lista
+        // Añadir el evento a la lista de eventos
         _eventos.value = _eventos.value + event
     }
 
     fun deleteEvent(event: Event) {
-        // Eliminar el evento de la lista
+        // Eliminar el evento de la lista de eventos
         _eventos.value = _eventos.value.filter { it.id != event.id }
     }
 
@@ -37,8 +41,20 @@ class EventosViewModel : ViewModel() {
         return _eventos.value.filter { it.name.contains(query, ignoreCase = true) }
     }
 
+    // Añadir un evento al carrito
+    fun addToCart(event: Event) {
+        // Evitar añadir duplicados utilizando un Set temporal
+        val updatedCart = _cart.value.toMutableSet().apply { add(event) }
+        _cart.value = updatedCart.toList()  // Convertir de nuevo a lista
+    }
+
+    // Eliminar un evento del carrito
+    fun removeFromCart(event: Event) {
+        _cart.value = _cart.value.filter { it.id != event.id }
+    }
+
     // Lista de eventos inicial
-    private fun getEventsList(): List<Event> {
+    fun getEventsList(): List<Event> {
         return listOf(
             Event(
                 id = "1",
