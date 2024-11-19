@@ -8,11 +8,13 @@ import androidx.activity.viewModels
 import com.unieventos.ui.navigation.Navigation
 import com.unieventos.ui.theme.ProyectoUniEventosTheme
 import com.unieventos.viewModel.EventosViewModel
+import com.unieventos.viewModel.UserViewModel
 
 class MainActivity : ComponentActivity() {
 
     // Usamos 'by viewModels()' para obtener la instancia del ViewModel gestionado por el ciclo de vida
     private val eventosViewModel: EventosViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,8 @@ class MainActivity : ComponentActivity() {
             ProyectoUniEventosTheme {
 
                 Navigation(
-                    eventosViewModel = eventosViewModel
+                    eventosViewModel = eventosViewModel,
+                    userViewModel = userViewModel
                 )
             }
         }

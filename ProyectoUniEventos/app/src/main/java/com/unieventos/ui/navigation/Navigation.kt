@@ -14,13 +14,17 @@ import com.unieventos.ui.screens.makePurchaseScreen
 import com.unieventos.ui.screens.myProfileScreen
 import com.unieventos.ui.screens.shoppingCartScreen
 import com.unieventos.viewModel.EventosViewModel
+import com.unieventos.viewModel.UserViewModel
 
 @Composable
-fun Navigation( eventosViewModel: EventosViewModel) {
+fun Navigation( eventosViewModel: EventosViewModel, userViewModel: UserViewModel) {
     val navController = rememberNavController()
+    val userViewModel = UserViewModel()
+
+    // Inicia la navegación
     NavHost(
         navController = navController,
-        startDestination = RouterScreen.catalogScreen::class.java.simpleName
+        startDestination = RouterScreen.LoginScreen::class.java.simpleName
     ) {
         composable(RouterScreen.LoginScreen::class.java.simpleName) {
             LoginScreen(
@@ -32,12 +36,14 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                 },
                 onNavigationToHome = {
                     navController.navigate(RouterScreen.catalogScreen::class.java.simpleName) {
-                        popUpTo(0) { inclusive = true }
-                        launchSingleTop = true
+                        // Limpia el historial de navegación para evitar volver a la pantalla de inicio de sesión
+                        popUpTo(RouterScreen.LoginScreen::class.java.simpleName) { inclusive = true }
                     }
-                }
+                },
+                userViewModel = userViewModel
             )
         }
+
 
         composable(RouterScreen.ForgottenPasswordScreen::class.java.simpleName) {
             ForgottenPasswordScreen()
@@ -103,7 +109,7 @@ fun Navigation( eventosViewModel: EventosViewModel) {
                     navController.navigate(RouterScreen.catalogScreen::class.java.simpleName)
                 },
                 eventosViewModel = eventosViewModel,
-                
+
             )
         }
 

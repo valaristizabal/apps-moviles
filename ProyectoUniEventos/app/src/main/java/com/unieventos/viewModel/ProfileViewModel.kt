@@ -1,4 +1,4 @@
-package com.unieventos.model
+package com.unieventos.viewModel
 
 import android.util.Patterns
 import androidx.compose.runtime.getValue

@@ -69,5 +69,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.kotlinx.serialization.json)
     implementation("io.coil-kt:coil-compose:2.2.2") // Versión más reciente en el momento de escritura
+    implementation ("androidx.compose.material3:material3:1.0.0")
+    implementation ("com.google.android.material:material:1.9.0")
 
 }
