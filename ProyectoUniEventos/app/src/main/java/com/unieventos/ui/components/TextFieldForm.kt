@@ -28,27 +28,27 @@ fun TextFieldForm(
     keyboardOptions: KeyboardOptions,
     isPassword: Boolean
 ){
-
-    var isError by rememberSaveable {
-        mutableStateOf(false)
-    }
+    var isError by rememberSaveable { mutableStateOf(false) }
 
     TextField(
         value = value,
+        onValueChange = {
+            onValueChange(it)
+            isError = onValidate(it) // Actualiza el estado de error según la validación
+        },
         label = { Text(text = label) },
         singleLine = true,
         isError = isError,
         supportingText = {
-            if(isError){
+            if (isError) {
                 Text(text = supportingText)
             }
         },
-        visualTransformation = if(isPassword){PasswordVisualTransformation() } else {VisualTransformation.None},
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
         keyboardOptions = keyboardOptions,
-        onValueChange = {
-            onValueChange(it)
-            isError = onValidate(it)
-        },
         modifier = modifier
+            .fillMaxWidth()
+            .background(Color.Transparent)
     )
+
 }

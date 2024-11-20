@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.unieventos.R
 import com.unieventos.model.Role
 import com.unieventos.model.User
@@ -35,7 +36,7 @@ import java.util.*
 @Composable
 fun UserRegistrationScreen(
     userViewModel: UserViewModel = viewModel(),
-    onBackClick: () -> Unit // Callback para manejar el clic en el botón "Regresar"
+    onBackClick: () -> Unit
 ) {
     val cities = listOf("Armenia", "Pereira", "Manizales", "Medellín", "Bogotá")
 
@@ -48,16 +49,21 @@ fun UserRegistrationScreen(
     var phoneNumber by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
+    var isSaving by remember { mutableStateOf(false) }
 
     // Estado del DatePicker
     val datePickerState = rememberDatePickerState()
+
+    // Firebase Firestore instance
+    val db = FirebaseFirestore.getInstance()
 
     // Función para manejar el guardado del usuario
     fun handleSave() {
         if (fullName.isNotEmpty() && idNumber.isNotEmpty() && city.isNotEmpty() &&
             birthday.isNotEmpty() && address.isNotEmpty() && phoneNumber.isNotEmpty() &&
-            email.isNotEmpty() && password.isNotEmpty()) {
-
+            email.isNotEmpty() && password.isNotEmpty()
+        ) {
+            isSaving = true // Mostrar progreso
             val newUser = User(
                 id = "id-${System.currentTimeMillis()}",
                 name = fullName,
@@ -71,24 +77,34 @@ fun UserRegistrationScreen(
                 phoneNumber = phoneNumber
             )
 
-            userViewModel.addUser(newUser)
-
-            // Limpiar los campos después de guardar
-            fullName = ""
-            idNumber = ""
-            city = ""
-            birthday = ""
-            address = ""
-            phoneNumber = ""
-            email = ""
-            password = ""
+            // Guardar en Firebase Firestore
+            db.collection("users")
+                .document(newUser.id) // El ID del documento será único
+                .set(newUser)
+                .addOnSuccessListener {
+                    isSaving = false // Ocultar progreso
+                    // Limpiar los campos después de guardar
+                    fullName = ""
+                    idNumber = ""
+                    city = ""
+                    birthday = ""
+                    address = ""
+                    phoneNumber = ""
+                    email = ""
+                    password = ""
+                }
+                .addOnFailureListener { exception ->
+                    isSaving = false // Ocultar progreso
+                    println("Error al guardar el usuario en Firestore: ${exception.message}")
+                }
+        } else {
+            println("Todos los campos son obligatorios")
         }
     }
 
     Scaffold { padding ->
         Box(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.fondo_apps_moviles),
@@ -112,11 +128,11 @@ fun UserRegistrationScreen(
                 ) {
                     Text(
                         text = "Regresar",
-                        color = Color.White // Asegúrate de que sea visible sobre el fondo
+                        color = Color.White
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp)) // Separación entre botón y contenido
+                Spacer(modifier = Modifier.height(16.dp))
 
                 Box(
                     modifier = Modifier
@@ -138,9 +154,9 @@ fun UserRegistrationScreen(
                             modifier = Modifier.fillMaxWidth(),
                             value = fullName,
                             onValueChange = { fullName = it },
-                            supportingText = stringResource(id = R.string.fullNameValidation),
-                            label = stringResource(id = R.string.fullnameLabel),
-                            onValidate = { fullName.length < 1 },
+                            supportingText = "Ingrese un nombre válido",
+                            label = "Nombre completo",
+                            onValidate = { fullName.isEmpty() },
                             isPassword = false,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                         )
@@ -276,4 +292,3 @@ fun UserRegistrationScreen(
         }
     }
 }
-
