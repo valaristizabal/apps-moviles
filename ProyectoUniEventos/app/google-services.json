@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "74475440809",
+    "project_id": "comunieventos",
+    "storage_bucket": "comunieventos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74475440809:android:96bfdc8beb97c3988bb7b8",
+        "android_client_info": {
+          "package_name": "com.unieventos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNpyjJ0JExaAgECchwDzjhi8Qq3QZe1Os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

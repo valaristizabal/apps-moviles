@@ -33,7 +33,10 @@ import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
+fun UserRegistrationScreen(
+    userViewModel: UserViewModel = viewModel(),
+    onBackClick: () -> Unit // Callback para manejar el clic en el botón "Regresar"
+) {
     val cities = listOf("Armenia", "Pereira", "Manizales", "Medellín", "Bogotá")
 
     var fullName by rememberSaveable { mutableStateOf("") }
@@ -55,11 +58,10 @@ fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
             birthday.isNotEmpty() && address.isNotEmpty() && phoneNumber.isNotEmpty() &&
             email.isNotEmpty() && password.isNotEmpty()) {
 
-            // Crear el usuario
             val newUser = User(
-                id = "id-${System.currentTimeMillis()}", // Generar un ID único
+                id = "id-${System.currentTimeMillis()}",
                 name = fullName,
-                role = Role.CLIENT, // Aquí puedes asignar un rol específico
+                role = Role.CLIENT,
                 email = email,
                 password = password,
                 idNumber = idNumber,
@@ -69,7 +71,6 @@ fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
                 phoneNumber = phoneNumber
             )
 
-            // Llamar a la función addUser del ViewModel
             userViewModel.addUser(newUser)
 
             // Limpiar los campos después de guardar
@@ -81,9 +82,6 @@ fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
             phoneNumber = ""
             email = ""
             password = ""
-        } else {
-            // Aquí podrías agregar un mensaje de error si los campos no están completos
-            // Como un Snackbar que indique que todos los campos deben ser llenados.
         }
     }
 
@@ -102,13 +100,28 @@ fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
                 modifier = Modifier
                     .padding(padding)
                     .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                // Botón "Regresar"
+                Button(
+                    onClick = { onBackClick() },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = "Regresar",
+                        color = Color.White // Asegúrate de que sea visible sobre el fondo
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp)) // Separación entre botón y contenido
+
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
-                        .padding(16.dp) //para el alrededor de box
+                        .padding(16.dp)
                         .background(
                             color = Color(0xFF201c2c),
                             shape = RoundedCornerShape(45.dp)
@@ -263,3 +276,4 @@ fun UserRegistrationScreen(userViewModel: UserViewModel = viewModel()) {
         }
     }
 }
+

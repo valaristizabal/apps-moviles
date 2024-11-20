@@ -86,6 +86,7 @@
     <string name="priceLocalityLabel">Precio</string>
     <string name="maxCapacityValidation">La capacidad máxima debe ser mayor a 0</string>
     <string name="maxCapacityLabel">Capacidad máxima</string>
+    <string name="backButton">Back</string>
 
 
 </resources>

@@ -1,8 +1,9 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.application) // Usar alias para simplificar
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinx.serialization)
+    id("com.google.gms.google-services") // Necesario para Firebase
 }
 
 android {
@@ -49,7 +50,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -68,8 +68,13 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.kotlinx.serialization.json)
-    implementation("io.coil-kt:coil-compose:2.2.2") // Versión más reciente en el momento de escritura
-    implementation ("androidx.compose.material3:material3:1.0.0")
-    implementation ("com.google.android.material:material:1.9.0")
+    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation("androidx.compose.material3:material3:1.0.0")
+    implementation("com.google.android.material:material:1.9.0")
 
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth") // Para autenticación de Firebase
+    implementation("com.google.firebase:firebase-firestore") // Firestore
 }
